@@ -1,0 +1,65 @@
+{% from "/macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/login.css')}}">
+        
+        <title>Login</title>
+
+        <style>
+            
+        </style>
+    </head>
+
+<body>
+    <header>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+        
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="flash" id="flash-success">
+                    <ul>
+                        {% for msg in success %}
+                            <li class="flash-message" data-type="success"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="flash" id="flash-error">
+                    <ul>
+                        {% for msg in errors %}
+                            <li class="error-message" data-type="error"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="container">
+            </div>
+        </section>
+    </main>
+    
+    {{ dummyNav() }}
+    {{ footer("footer-item", "footer-item", "footer-item") }}
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+</body>
+</html>

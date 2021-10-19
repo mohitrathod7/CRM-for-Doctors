@@ -1,0 +1,159 @@
+{% from "macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+{% from "/components/component.html" import toTopButton, searchBar, box, doctorCard %}
+{% from "/components/skeleton.html" import doctorCardSkeleton %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/searchbar.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/specializations.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/doctor/doctor-card.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/skeleton/doctor-card.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/skeleton-doctor-card.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/doctor-card.css')}}">
+        
+        <title>Home</title>
+    </head>
+
+    <style>
+
+    </style>
+<body>
+    <header>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="flash" id="flash-success">
+                    <ul>
+                        {% for msg in success %}
+                            <li class="flash-message" data-type="success"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="flash" id="flash-error">
+                    <ul>
+                        {% for msg in errors %}
+                            <li class="error-message" data-type="error"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    
+    <section class="loading">
+        <div class="sticky-div">
+            {{ searchBar("search", "Search something here...") }}
+            
+            <div class="specializations">
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+                <div class="loading-animation"></div>
+            </div>
+        </div>
+
+        <div class="doctors">
+            {{ doctorCardSkeleton() }}
+            {{ doctorCardSkeleton() }}
+            {{ doctorCardSkeleton() }}
+            {{ doctorCardSkeleton() }}
+            {{ doctorCardSkeleton() }}
+            {{ doctorCardSkeleton() }}
+        </div>
+    </section>
+    
+    <main>
+        <section class="content">
+            <div class="sticky-div">
+                {{ searchBar("search", "Search something here...") }}
+                
+                <div class="specializations">
+                    {{ box("/static/images/icons/heart.png", "heart") }}
+                    {{ box("/static/images/icons/ear.png", "ear") }}
+                    {{ box("/static/images/icons/nose.png", "nose") }}
+                    {{ box("/static/images/icons/tooth.png", "tooth") }}
+                    {{ box("/static/images/icons/throat.png", "throat") }}
+                    {{ box("/static/images/icons/bones.png", "bones") }}
+                    {{ box("/static/images/icons/veterinary.png", "veterinary") }}
+                    {{ box("/static/images/icons/brain.png", "brain") }}
+                    {{ box("/static/images/icons/lungs.png", "lungs") }}
+                    {{ box("/static/images/icons/radiologist.png", "radiologist") }}
+                </div>
+            </div>
+    
+            <div class="doctors">
+                {% if doctors %}
+                    {% for doctor in doctors %}                    
+                        <article class="doctor-card">
+                            <section class="left">
+                                <img src="{{ url_for('static', filename='images/doctor.jfif') }}" height="100" width="100" alt="Profile picture of doctor">
+                                
+                                <a class="view-profile-left" href="{{ url_for('doctors.doctor_profile', doctor_id=doctor.id) }}">View Profile</a>
+                            </section>
+
+                            <section class="right">
+                                <div class="name">
+                                    <h3>{{ doctor.firstname }} {{ doctor.lastname }}</h3>
+                                    <p>Dental Surgeon</p>
+                                </div>
+
+                                <div class="rating">
+                                    <div class="rate">
+                                        <p style="margin-right: 5px;">4.6</p>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                    <div class="rate-count">
+                                        <p>14 ratings</p>
+                                    </div>
+                                </div>
+
+                                <div class="speciality">
+                                    <p>Dentistry</p>
+                                    <p>Surgery</p>
+                                    <p>Implantology</p>
+                                    <p>Paediatric</p>
+                                    <p>Surgery</p>
+                                </div>
+
+                                <a class="view-profile-right" href="{{ url_for('doctors.doctor_profile', doctor_id=doctor.id) }}">View Profile</a>
+                            </section>
+                        </article>
+                    {% endfor %}
+                {% else %}
+                    <h1 style="margin: auto; color: var(--error);">{{ message }}</h1>
+                {% endif %}
+            </div>
+    
+            {{ toTopButton() }}
+        </section>
+    </main>
+
+    {{ dummyNav() }}
+    {{ footer("footer-item", "footer-item active", "footer-item") }}
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/search.js') }}"></script>
+</body>
+</html>

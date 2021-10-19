@@ -1,0 +1,29 @@
+body{
+    overflow: hidden;
+}
+
+main{
+    transform: translateY(-2px);
+}
+
+.content{
+    position: relative;
+    overflow: scroll;
+    height: 87vh;
+}
+
+#toTop{
+    display: none;
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    bottom: 70px; /* Footer height(50px) + distance */
+    right: 20px;
+    z-index: 101;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+}

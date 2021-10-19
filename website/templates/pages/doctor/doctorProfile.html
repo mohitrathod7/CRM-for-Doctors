@@ -1,0 +1,160 @@
+{% from "/macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+{% from "/components/component.html" import doctorCard %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/doctorProfile.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/doctor/doctor-card.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/doctorProfile.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/doctor-card.css')}}">
+        
+        <title>Doctor Profile</title>
+
+        <style>
+            
+        </style>
+    </head>
+
+<body>
+    <header>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+        
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="flash" id="flash-success">
+                    <ul>
+                        {% for msg in success %}
+                            <li class="flash-message" data-type="success"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="flash" id="flash-error">
+                    <ul>
+                        {% for msg in errors %}
+                            <li class="error-message" data-type="error"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="container">
+                <section class="profile"> 
+                    <article class="doctor-card">
+                        <section class="left">
+                            <img src="{{ url_for('static', filename='images/doctor.jfif') }}" height="100" width="100" alt="Profile picture of doctor">
+                        </section>
+
+                        <section class="right">
+                            <div class="name">
+                                <h3>{{ doctors.firstname }} {{ doctors.lastname }}</h3>
+                                <p>{{ doctors.type }}</p>
+                            </div>
+
+                            <div class="rating">
+                                <div class="rate">
+                                    <p style="margin-right: 5px;">4.6</p>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <div class="rate-count">
+                                    <p>14 ratings</p>
+                                </div>
+                            </div>
+
+                            <div class="speciality">
+                                <p>Dentistry</p>
+                                <p>Surgery</p>
+                                <p>Implantology</p>
+                                <p>Paediatric</p>
+                                <p>Surgery</p>
+                            </div>
+                        </section>
+                    </article>
+                </section>
+                
+                <section class="info">    
+                    <div id="about">
+                        <div class="label-data">
+                            <div class="label-data-item">
+                                <i class="fa fa-user"></i>
+                                <span>
+                                    <h2>1.2 K</h2>
+                                    <h4>Patients</h4>
+                                </span>
+                            </div>
+
+                            <div class="label-data-item">
+                                <i class="fa fa-hourglass"></i>
+                                <span>
+                                    <h2>9 Years</h2>
+                                    <h4>Experience</h4>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="time">
+                        <div class="label-data">
+                            <div class="label-data-item">
+                                <h4>Mon - Fri</h4>
+                                <h4>08:00 AM - 09:00 PM</h4>
+                            </div>
+
+                            <div class="label-data-item">
+                                <address>
+                                    <i class="fa fa-phone"><a href="tel:+91 {{ doctors.phone | int }}"><h4>+91 {{ doctors.phone | int }}</h4></a></i>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+              
+                    <div id="address">
+                        <div class="label-data">
+                            <div class="label-data-item">
+                                <i class="fa fa-map-pin"></i>
+                                <address>
+                                    <h4>Swami Satyanand Maharaj Road, near Maxus Mall, Bhayandar West, Mira Bhayandar, Maharashtra 401101</h4>
+                                    <a style="color: var(--error);" target="_blank"
+                                       href="https://www.google.com/maps/place/Tembha+Hospital/@19.2979695,72.8345816,15z/data=!4m5!3m4!1s0x3be7b1cc51ce7343:0x95e7e3b76ab73392!8m2!3d19.2974719!4d72.8481172">
+                                       <u>View on maps</u>
+                                    </a>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        
+        <!-- Book appointment button -->
+        <div class="book-button-container">
+            <div class="book-button">
+                <a href="{{ url_for('doctors.doctor_appointment', doctor_id=doctors.id) }}">Book Appointment</a>
+            </div>
+        </div>
+    </main>
+    
+    {{ dummyNav() }}
+    {{ footer("footer-item", "footer-item", "footer-item") }}
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% macro toTopButton() %}
+<button onclick="toTop()" id="toTop" title="Go to top">
+    <i class="fa fa-chevron-up"></i>
+</button>
+{% endmacro %}
+
+
+{% macro searchBar(action, placeholder) %}
+<div class="search-bar">
+    <form method="POST" action="/{{action}}">
+        <input class="search-box" type="text" placeholder="{{placeholder}}">
+        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="sort-filter">
+        <i class="fa fa-filter"></i>
+        <i class="fa fa-exchange"></i>
+    </div>
+</div>
+
+<div class="overlay">
+    <div class="filter">
+        <i class="fa fa-times"></i>
+    </div>
+    
+    <div class="sort">
+        <i class="fa fa-times"></i>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro box(source, type) %}
+<div class="box">
+    <figure>
+        <a href="{{ url_for('doctors.doctor_profile_by_type', doctor_type=type) }}">
+            <img draggable="false" src="{{source}}" loading="lazy">
+        </a>
+    </figure>
+</div>
+{% endmacro %}
+
+
+{% macro doctorCard() %}
+<article class="doctor-card">
+    <section class="left">
+        <img src="{{ url_for('static', filename='images/doctor.jfif') }}" height="100" width="100" alt="Profile picture of doctor">
+        
+        <a class="view-profile-left" href="{{ url_for('doctors.doctor_profile', doctor_name='mohit') }}">View Profile</a>
+    </section>
+
+    <section class="right">
+        <div class="name">
+            <h3>{{ doctors.firstname }} {{ doctors.lastname }}</h3>
+            <p>Dental Surgeon</p>
+        </div>
+
+        <div class="rating">
+            <div class="rate">
+                <p style="margin-right: 5px;">4.6</p>
+                <i class="fa fa-star"></i>
+            </div>
+
+            <div class="rate-count">
+                <p>14 ratings</p>
+            </div>
+        </div>
+
+        <div class="speciality">
+            <p>Dentistry</p>
+            <p>Surgery</p>
+            <p>Implantology</p>
+            <p>Paediatric</p>
+            <p>Surgery</p>
+        </div>
+
+        <a class="view-profile-right" href="{{ url_for('doctors.doctor_profile', doctor_name='doctors.firstname') }}">View Profile</a>
+    </section>
+</article>
+{% endmacro %}

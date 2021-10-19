@@ -1,0 +1,283 @@
+{% from "/macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/signup.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/signup.css')}}">
+        
+        <title>SignUp - User</title>
+
+        <style>
+            
+        </style>
+    </head>
+
+<body>
+    <header>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+        
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="flash" id="flash-success">
+                    <ul>
+                        {% for msg in success %}
+                            <li class="flash-message" data-type="success"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="flash" id="flash-error">
+                    <ul>
+                        {% for msg in errors %}
+                            <li class="error-message" data-type="error"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="container">
+                <form id="form" method="POST" action="{{ url_for('auth.sign_up_as_user') }}">
+                    <div class="signup-buttons">
+                        <a class="button active" href="{{ url_for('auth.sign_up_as_user') }}">Sign up as User</a>
+                        <p style="color: white;">or</p>
+                        <a class="button" href="{{ url_for('auth.sign_up_as_doctor') }}">Sign up as Doctor</a>
+                    </div>
+
+                    <div>
+                        {{ form.csrf_token }}
+                    </div>
+
+                    <div class="fields-div">
+                        <div class="fields-sub-div">
+                            <!-- First name -->
+                            <div class="fields">
+                                {{ form.firstname(placeholder="First Name : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.firstname.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Last name -->
+                            <div class="fields">
+                                {{ form.lastname(maxlenght=20, placeholder="Last Name : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.lastname.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- User name -->
+                            <div class="fields">
+                                {{ form.username(placeholder="User Name : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.username.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="fields">
+                                {{ form.email(placeholder="Email Address : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.email.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="fields">
+                                {{ form.password(placeholder="Password : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.password.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fields-sub-div">                           
+                            <!-- Gender -->
+                            <div class="fields">
+                                {{ form.gender.label }}
+                                {{ form.gender(placeholder="Gender : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.gender.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Blood group -->
+                            <div class="fields">
+                                {{ form.blood_group.label }}
+                                {{ form.blood_group(autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.blood_group.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Height (ft) -->
+                            <div class="fields">
+                                {{ form.height_ft.label }}
+                                {{ form.height_ft(autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.height_ft.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Height (inch) -->
+                            <div class="fields">
+                                {{ form.height_inch.label }}
+                                {{ form.height_inch(autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.height_inch.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Weight (kg) -->
+                            <div class="fields">
+                                {{ form.weight_kg(placeholder="Weight (kg) : ", autocomplete="off", min=1, max=120) }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.weight_kg.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fields-sub-div">
+                            <!-- Phone number -->
+                            <div class="fields">
+                                {{ form.phone(placeholder="Phone number : ", autocomplete="off", min=0, max=9999999999) }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.phone.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Zip code -->
+                            <div class="fields">
+                                {{ form.zipcode(placeholder="Zip code : ", autocomplete="off", min=0, max=999999) }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.zipcode.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- City -->
+                            <div class="fields">
+                                {{ form.city(placeholder="City : ", autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.city.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- State -->
+                            <div class="fields">
+                                {{ form.state(autocomplete="off") }}
+
+                                <div class="errors">
+                                    <ul>
+                                        {% for error in form.state.errors %}
+                                            <li class="error-message"><i class="fa fa-exclamation-triangle"></i>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form buttons -->
+                    <div class="bottom-buttons">
+                        <!-- Submit button -->
+                        <div class="fields">
+                            <input class="submit-button" onclick="submitForm()" type="submit" value="Submit">
+                        </div>
+
+                        <!-- Clear button -->
+                        <div class="fields">
+                            <input class="clear-button" onclick="clearForm()" type="button" value="Clear all">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    {{ dummyNav() }}
+    {{ footer("footer-item", "footer-item", "footer-item") }}
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+</body>
+</html>

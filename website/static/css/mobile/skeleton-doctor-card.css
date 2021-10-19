@@ -1,0 +1,11 @@
+.loading .doctors .doctor-card .view-profile-right{
+    height: 21px;
+    width: -webkit-fill-available;
+    border-radius: 8px;
+    background: var(--sec-hover);
+}
+
+.loading .doctors .doctor-card .right .speciality p{
+    height: 24px;
+    width: 72px;
+}

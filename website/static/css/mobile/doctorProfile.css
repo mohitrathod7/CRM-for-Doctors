@@ -1,0 +1,63 @@
+.content{
+    margin: 15px 0;
+    margin-bottom: 0;
+    height: 82.5vh;
+}
+
+.container{
+    padding: 0;
+    flex-direction: column;
+}
+
+.container .profile{
+    padding: 0;
+}
+
+.container .info{
+    margin: 15px 0 25px 0;
+    height: auto !important;
+    overflow-y: initial;
+}
+
+#about, #time, #address{
+    min-height: 150px;
+}
+
+.container .info #address{
+    margin-bottom: 15px;
+}
+
+.container .info .label-data{
+    align-items: center;
+    min-height: 150px;
+}
+
+.container .info #time .label-data-item{
+    display: block;
+}
+
+.container .info #time .label-data-item h4:nth-child(2){
+    margin-left: 0;
+}
+
+.container .info .label{
+    padding-top: 10px;
+    margin: 15px 0;
+    max-width: 150px;
+}
+
+.container .view-profile{
+    padding-top: 15px;
+}
+
+.doctor-card .view-profile-left, .doctor-card .view-profile-right{
+    display: none !important;
+}
+
+.doctor-card .right .speciality{
+    justify-content: flex-start;
+}
+
+.book-button-container{
+    bottom: 5px;
+}

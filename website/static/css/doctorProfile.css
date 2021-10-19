@@ -1,0 +1,170 @@
+.container{
+    padding: 61px 0;
+    margin: 0 auto;
+    display: flex;
+    max-width: 1000px;
+}
+
+.container .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+}
+
+.container .info{
+    margin: 0 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: -webkit-fill-available;
+    box-shadow: 0 0 5px 0 var(--boxShadow);
+    border-radius: 8px;
+    overflow-y: scroll;
+}
+
+#about, #time, #address{
+    margin-bottom: 15px;
+    height: -webkit-fill-available;
+    border-radius: 10px;
+}
+
+#address{
+    margin-bottom: 0;
+}
+
+
+/* --------------------------------------- */
+
+.container .info #about{
+    background: hsl(248, 20%, 16%);
+}
+
+.container .info #about .label-data-item{
+    color: var(--blue-alt);
+}
+
+.container .info #time{
+    background: hsl(267, 20%, 16%);
+}
+
+.container .info #time .label-data-item h4:nth-child(2){
+    margin-left: 10px;
+}
+
+.container .info #time .label-data-item{
+    color: var(--pink);
+}
+
+.container .info #address{
+    background: hsl(346, 20%, 16%);
+
+}
+
+.container .info #address .label-data-item{
+    color: #b56576;
+}
+
+.container .info .label-data{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.container .info .label-data-item{
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.container .info .label-data-item .fa::before{
+    font-size: 40px;
+    padding-right: 10px;
+}
+
+.container .info .label-data-item .fa{
+    display: flex;
+    align-items: center;
+}
+
+.fa-phone::before{
+    font-size: 30px !important;
+}
+
+
+/* ------------- Doctor Card ------------- */
+
+.container .doctor-card{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .doctor-card img{
+    margin: auto;
+    height: 150px !important;
+    width: 150px !important;
+}
+
+.container .doctor-card .name{
+    padding-bottom: 15px !important;
+    text-align: center;
+}
+
+.container .doctor-card .name p{
+    margin-top: 5px;
+}
+
+.container .doctor-card .rating{
+    padding-bottom: 15px !important;
+    justify-content: center;
+}
+
+.container .doctor-card .speciality p{
+    margin: 0 15px 15px 0 !important;
+}
+
+.doctor-card .view-profile-left, .doctor-card .view-profile-right{
+    display: none !important;
+}
+
+
+/* ------------- Appointment button ------------- */
+
+.book-button-container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    width: -webkit-fill-available;
+    bottom: 34px;
+}
+                
+.book-button{
+    padding: 4px;
+    width: 160px;
+    text-align: center;
+    background: hsl(136, 20%, 16%);
+    border: 1px solid hsl(136, 20%, 16%);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.book-button:hover{
+    border: 1px solid var(--green-alt);
+}
+
+.book-button a{
+    background: inherit;
+    width: 150px;
+    text-align: center;
+    color: var(--green-alt);
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+}

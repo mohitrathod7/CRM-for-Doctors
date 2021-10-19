@@ -1,0 +1,27 @@
+.doctors{
+    display: block;
+}
+
+.doctor-card{
+    flex-direction: column !important;
+    height: auto;
+    width: -webkit-fill-available !important;
+}
+
+.view-profile-left{
+    display: none;
+}
+
+.view-profile-right{
+    display: block !important;
+}
+
+.doctor-card .right .speciality{
+    max-height: fit-content !important;
+}
+
+.doctor-card .right .speciality p{
+    margin: 10px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}

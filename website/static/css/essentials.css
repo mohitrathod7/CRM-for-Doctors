@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Bhai 2', sans-serif;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+:root{
+    --boxShadow: rgba(20,20,20,0.6);
+    --loading-animation: loading 1s infinite linear;
+    --yellow: #EFCA4D;
+    --green: #03DAC6;
+    --pink: #BB86FC;
+    --red-alt: #ff4f68;
+    --green-alt: #6ce890;
+    --orange-alt: #f8b068;
+    --yellow-alt: #f5eea2;
+    --blue-alt: #7561ff;
+    --pink-alt: #ff3654;
+    --groww-red: #d55438;
+    --groww-green: #0abb92;
+    --groww-blue: #98a4ff;
+}
+
+html[data-theme=light]{
+    --loader: linear-gradient(90deg, #f4f4f4, rgba(229, 229, 229, 0.7) 90px, #f4f4f4 150px);
+    --primary-bg-alt: #1f2227;
+    --secondary-bg-alt: #39464e;
+    --card-bg-alt: hsla(0%, 0%, 100%, 0.1); 
+    --primary-text-alt: #fbfbfb;
+    --secondary-text-alt: #cfd0d1;
+    --border: #2a2a2a;
+    --success: #28a745;
+    --danger: #dc3545;
+}
+
+html[data-theme=dark]{
+    --loader: linear-gradient(90deg, var(--sec-hover), rgba(44, 44, 44, 0.7) 25px, var(--sec-hover) 75px);
+    --pri-bg: #181818;
+    --sec-bg: #212121;
+    --sidepanel-bg: #252525;
+    --sec-hover: #2c2c2c;
+    --pri-text: #DCDCDC;
+    --sec-text: #b3b3b3;
+    --icons: #909090;
+    --error: #CF6679;
+    --border: #2a2a2a;
+    --success: #28a745;
+    --danger: #dc3545;
+}
+
+body{
+    background: var(--pri-bg);
+}
+
+.content{
+    margin: auto;
+    padding: 0 15px;
+    max-width: 1160px;
+}
+
+.loading{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 1160px;
+    height: 100%;
+    transition: 1s all ease-in;
+    transform: translateY(-2px);
+    pointer-events: none;
+    z-index: 50;
+}
+
+.loading-animation{
+    padding: 0 !important;
+    background: var(--loader);
+    animation: var(--loading-animation) !important;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+
+i{
+    height: fit-content;
+}
+
+i::before{
+    cursor: pointer;
+}
+
+ul, li{
+    list-style: none;
+}
+
+input, button, select{
+    outline: none;
+    border: 0;
+}
+
+.sticky-div{
+    padding-bottom: 20px;
+    position: sticky;
+    top: -1px;
+    background: var(--pri-bg);
+}
+
+img{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* For Background blur effect  */
+.overlay{
+    display: none;
+    height: 85vh;
+    width: 98%;
+    top: 0;
+    right: 1%; /* right= (100 - width)/2 */
+    position: absolute;
+    transition: 1s all ease-in-out;
+    backdrop-filter: blur(2px);
+}
+
+/* Flash messages */
+.flash{
+    padding: 0 20px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    height: 50px;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+#flash-success{
+    background: var(--success);
+}
+
+#flash-error{
+    background: var(--danger);
+}
+
+.flash-message{
+    display: flex;
+    align-items: baseline;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.flash-message .fa-exclamation-triangle::before,
+.flash-message .fa-check-circle::before{
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+
+@keyframes loading{
+    0%{
+        background-position: 00px;
+    }
+    100%{
+        background-position: 200px;
+    }
+}

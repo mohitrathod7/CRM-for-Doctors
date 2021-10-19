@@ -1,0 +1,172 @@
+.container{
+    margin: 10px;
+    padding: 10px;
+    height: 77.1vh;
+    
+}
+
+.container .signup-buttons{
+    margin-bottom: 20px;
+    padding: 4px;
+    width: fit-content;
+    display: flex;
+    background: hsl(166, 20%, 16%);
+    border-radius: 30px;
+}
+
+.container .button{
+    width: 150px;
+    color: var(--groww-green);
+    text-align:center; 
+    border-radius: 30px;
+    cursor: pointer;
+    background: hsl(166, 20%, 16%);
+    border: 1px solid hsl(166, 20%, 16%);
+}
+
+.container .button:hover{
+    border: 1px solid var(--groww-green);
+}
+
+.container .signup-buttons .button:first-child{
+    margin-right: 10px;
+}
+
+.container .signup-buttons .button:last-child{
+    margin-left: 10px;
+}
+
+.container .signup-buttons .button.active{
+    background: var(--groww-green);
+    color: black;
+    font-weight: 600;
+    border: 1px solid var(--groww-green);
+}
+
+.container .submit-button{
+    height: 35px;
+    width: 80px;
+    color: var(--groww-green);
+    text-align:center; 
+    border-radius: 30px;
+    cursor: pointer;
+    background: hsl(166, 20%, 16%);
+    border: 1px solid hsl(166, 20%, 16%);
+}
+
+.container .submit-button:hover{
+    border: 1px solid var(--groww-green);
+}
+
+.container .clear-button{
+    height: 35px;
+    width: 80px;
+    color: var(--pink-alt);
+    text-align:center; 
+    border-radius: 30px;
+    cursor: pointer;
+    background: hsl(350, 20%, 16%);
+    border: 1px solid hsl(350, 20%, 16%);
+}
+
+.container .clear-button:focus{
+    border: 1px solid hsl(350, 20%, 16%);
+}
+
+.container .clear-button:hover{
+    border: 1px solid var(--pink-alt);
+}
+
+.container form{
+    margin: auto;
+    padding: 0 50px;
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container form .fields-div{
+    display: flex;
+    height: 355px;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.container form .fields-div .fields-sub-div{
+    margin: 0 10px;
+}
+
+.container form .fields{
+    margin-bottom: 30px;
+}
+
+.container form  h1{
+    margin-bottom: 50px;
+    text-align: center;
+    color: var(--pri-text);
+}
+
+.container form label{
+    color: var(--sec-text);
+}
+
+.container form input, .container form select{
+    padding: 5px 10px;
+    height: 25px;
+    width: 150px;
+    background: var(--sec-bg);
+    color: var(--sec-text);
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid var(--sec-bg);
+}
+
+.container form input:focus, .container form select:focus{
+    border: 1px solid var(--groww-green);
+}
+
+.container form select{
+    margin-left: 16px;
+    padding: 5px;
+    height: 37px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.container form .fields .errors .error-message{
+    padding-top: 5px;
+    display: flex;
+    align-items: baseline;
+    color: var(--error);
+    font-size: 14px;
+}
+
+.container form .fields .errors .error-message .fa-exclamation-triangle::before{
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.container form #gender{
+    width: 96px;
+}
+
+.container form #state{
+    margin: 0;
+    width: 172px;
+}
+
+.container .bottom-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: -webkit-fill-available;
+}
+
+.container .bottom-buttons .fields{
+    margin: auto;
+    text-align: center;
+}

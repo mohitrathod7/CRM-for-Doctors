@@ -1,0 +1,166 @@
+/* ------------------------------ Common ------------------------------ */
+
+nav, footer{
+    margin: 0 1px;
+    padding: 5px 40px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: -webkit-fill-available;
+    border: 0;
+    background: var(--sec-bg);
+    color: var(--pri-text);
+    z-index: 100;
+}
+
+i::before{
+    font-size: 24px;
+}
+
+nav .fa, footer .fa{
+    width: 30px;
+    color: var(--pri-text);
+}
+
+nav .active .fa, footer .active .fa{
+    color: unset;
+}
+
+/* ------------------------------ Dummy Nav ------------------------------ */
+.dummyNav{
+    height: 52px;
+    width: -webkit-fill-available;
+}
+
+/* ------------------------------ Nav------------------------------ */
+
+nav{
+    top: 0;
+    border-bottom: 1px solid var(--border);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+nav .fa-times{
+    display: none;
+    color: var(--groww-red);
+}
+
+nav #title{
+    font-size: 24px;
+    line-height: 40px;
+}
+
+nav .fa-times:hover{
+    color: var(--groww-red);
+}
+
+/* ------------------------------ Side Panel ------------------------------ */
+
+.sidePanel{
+    padding: 50px 0;
+    background: var(--sidepanel-bg);
+    color: var(--pri-text);
+    height: -webkit-fill-available; 
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; 
+    z-index: 10; 
+    top: 0;
+    left: 0;
+    overflow-x: hidden; 
+    transition: 0.5s all ease-in-out; 
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+}
+
+.sidePanel ul{
+    padding: 20px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidePanel ul li{
+    margin: 10px 0;
+    padding: 5px 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.sidePanel ul li a{
+    color: var(--pri-text);
+}
+
+.sidePanel ul hr{
+    margin: 5px 0;
+}
+
+.sidePanel .fa{
+    width: 40px;
+    color: var(--icons);
+}
+
+.sidePanel ul li:hover a, .sidePanel ul li:hover{
+    background: var(--sec-hover);
+}
+
+.highlight{
+    background: hsl(166, 20%, 16%);
+    border-radius: 5px;
+}
+
+li:nth-child(6){
+    background: unset;
+    border: none;
+}
+
+.highlight p,
+.highlight .fa-user-plus::before,
+.highlight .fa-sign-out::before{
+    color: var(--groww-green);
+}
+
+.highlight:hover,
+.highlight:hover p,
+.highlight:hover .fa-user-plus::before,
+.highlight:hover .fa-sign-out::before{
+    background-color: var(--groww-green) !important;
+    color: var(--sidepanel-bg);
+}
+
+.highlight-alert{
+    border: 1px solid var(--groww-red);
+    border-radius: 5px;
+}
+
+.highlight-alert p,
+.highlight-alert .fa-sign-out::before{
+    color: var(--groww-red);
+}
+
+.highlight-alert:hover,
+.highlight-alert:hover p,
+.highlight-alert:hover .fa-sign-out::before{
+    background-color: var(--groww-red) !important;
+    color: var(--sidepanel-bg);
+}
+
+/* ------------------------------ Footer ------------------------------ */
+
+footer{
+    bottom: 0;
+    height: 40px;
+    border-top: 1px solid var(--border);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+footer .active, nav .active{
+    color: var(--groww-green);
+}
+
+footer .active .fa::before, nav .active .fa::before{
+    padding-bottom: 5px;
+    border-bottom: 2px solid;
+}

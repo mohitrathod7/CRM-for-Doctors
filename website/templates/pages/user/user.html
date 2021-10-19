@@ -1,0 +1,39 @@
+{% from "/macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+{% from "/components/component.html" import toTopButton, searchBar %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/searchbar.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/specializations.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/doctor/doctor-card.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/skeleton/doctor-card.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/components/mobile/doctor-card.css')}}">
+        
+        <title>User</title>
+    </head>
+
+    <body>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+    
+        <section class="loading">
+            
+        </section>
+    
+        <section class="content">
+            {{ toTopButton() }}
+        </section>
+    
+        {{ dummyNav() }}
+        {{ footer("footer-item", "footer-item", "footer-item active") }}
+    
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+.container{
+    padding: 0;
+}
+
+.container .signup-buttons{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: unset;
+}
+
+.container form{
+    padding: 0;
+}
+
+.container form .fields-div{
+    flex-direction: column;
+    height: unset;
+}
+
+.container form .fields-div .fields-sub-div{
+    margin: 0;
+}
+
+.container form input{
+    height: 30px;
+    width: -webkit-fill-available;
+}
+
+.container form #state{
+    height: 42px;
+    width: -webkit-fill-available;
+}

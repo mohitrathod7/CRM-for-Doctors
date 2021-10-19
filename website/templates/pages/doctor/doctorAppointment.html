@@ -1,0 +1,205 @@
+{% from "/macros/macro.html" import links, dummyNav, nav, sidePanel, footer %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        {{ links()}}
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/nfs.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/essentials.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/components/doctor/doctorAppointment.css')}}">
+        <link rel="stylesheet" media="screen and (max-width: 576px)" href="{{url_for('static', filename='css/mobile/doctorAppointment.css')}}">
+        
+        <title>Login</title>
+
+        <style>
+            
+        </style>
+    </head>
+
+<body>
+    <header>
+        {{ dummyNav() }}
+        {{ nav() }}
+        {{ sidePanel(current_user) }}
+        
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="flash" id="flash-success">
+                    <ul>
+                        {% for msg in success %}
+                            <li class="flash-message" data-type="success"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="flash" id="flash-error">
+                    <ul>
+                        {% for msg in errors %}
+                            <li class="error-message" data-type="error"><i class="fa fa-exclamation-triangle"></i>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="container">
+                <!-- Dates -->
+                <section class="section" style="margin-top: 25px;">
+                    <h2>Select date to visit</h2>
+
+                    <div class="date-div">
+                        {% for date in dates %}
+                            {% if dates.index(date) == 0 %}    
+                                <div class="date selected" data-date='{{date["date"]}}-{{date["month_int"]}}-{{date["year_full"]}}'>{{date["weekday"]}}<br>{{date["date"]}}<br>{{date["month"]}}</div>
+                            {% else %}
+                                <div class="date" data-date='{{date["date"]}}-{{date["month_int"]}}-{{date["year_full"]}}'>{{date["weekday"]}}<br>{{date["date"]}}<br>{{date["month"]}}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <!-- Slots -->
+                <section class="section" style="margin-bottom: 30px;">
+                    <h2>Slots available</h2>
+
+                    <div class="time-div 12-10-2021">
+                        <div class="time selected" data-time="08 : 00 AM"><span>08 : 00 AM</span></div>
+                        <div class="time" data-time="08 : 30 AM"><span>08 : 30 AM</span></div>
+                        <div class="time" data-time="09 : 00 AM"><span>09 : 00 AM</span></div>
+                        <div class="time" data-time="02 : 30 PM"><span>02 : 30 PM</span></div>
+                        <div class="time" data-time="08 : 30 PM"><span>08 : 30 PM</span></div>
+                    </div>
+
+                    <div class="time-div 13-10-2021">
+                        <div class="time" data-time="08 : 00 AM"><span>08 : 00 AM</span></div>
+                        <div class="time" data-time="08 : 30 AM"><span>08 : 30 AM</span></div>
+                        <div class="time" data-time="09 : 00 AM"><span>09 : 00 AM</span></div>
+                        <div class="time" data-time="09 : 30 AM"><span>09 : 30 AM</span></div>
+                        <div class="time" data-time="10 : 00 AM"><span>10 : 00 AM</span></div>
+                    </div>
+                    
+                    <div class="time-div 14-10-2021">
+                        <div class="time" data-time="08 : 00 AM"><span>08 : 00 AM</span></div>
+                        <div class="time" data-time="08 : 30 AM"><span>08 : 30 AM</span></div>
+                        <div class="time" data-time="09 : 00 AM"><span>09 : 00 AM</span></div>
+                        <div class="time" data-time="09 : 30 AM"><span>09 : 30 AM</span></div>
+                        <div class="time" data-time="10 : 00 AM"><span>10 : 00 AM</span></div>
+                    </div>
+                </section>
+
+                <!-- Button -->
+                <section class="section">
+                    <div class="button book">Book</div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Overlay -->
+        <div class="overlay">
+            <div class="confirmation-div" style="display: block;">
+                <!-- <i class="fa fa-times"></i> -->
+                
+                <form id="form" method="POST, GET" action="{{ url_for('doctors.doctor_appointment_confirmation', doctor_id=_doctor_id) }}">
+                    <div>
+                        {{ form.csrf_token }}
+                    </div>
+
+                    <div class="fields-div">
+                        <div class="fields-sub-div">
+                            <!-- Date -->
+                            <div class="fields">
+                                {{ form.date.label }}
+                                {{ form.date(placeholder="Date : ", autocomplete="off", readonly=true) }}
+                            </div>
+
+                            <!-- Time -->
+                            <div class="fields">
+                                {{ form.time.label }}
+                                {{ form.time(placeholder="Time : ", autocomplete="off", readonly=true) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form buttons -->
+                    <div class="bottom-buttons">
+                        <div class="fields">
+                            <input class="button edit" id="editButton" type="reset" value="Edit">
+                            <input class="button" type="submit" value="Confirm">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    {{ dummyNav() }}
+    {{ footer("footer-item", "footer-item", "footer-item") }}
+
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/essentials.js') }}"></script>
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/nav.js') }}"></script>
+
+    <script>
+        // Booking button functions
+        $('.button.book').click(function(){
+            // getDate
+            var date_value = document.querySelector('.date.selected').getAttribute('data-date');
+            document.getElementById("date").value = date_value;    
+
+            // getTime
+            var time_class = document.getElementsByClassName(date_value);
+
+            if ( $('.' + date_value).find($('.time.selected')).length != 0){
+                var time_value = time_class[0].querySelector('.time.selected').getAttribute('data-time');
+                document.getElementById("time").value = time_value;
+
+                // Open overlay
+                $(".overlay").css("display", "block");
+                $(".confirmation-div").css("display", "block");
+                $("body").css("pointer-events", "none");
+                    
+                $('.button.edit').click(function(){ 
+                    $(".filter").css("display", "none");
+                    $("body").css("pointer-events", "all");
+                    $(".overlay").css("display", "none");
+                });
+            }
+            else{
+                alert("PLEASE SELECT SLOT");
+            }
+        });
+        
+        // Filter slots
+        $(document).ready(function (){
+            $('.date').click(function () {
+                const value = $(this).attr('data-date');
+                var className = $(this).attr('class');
+
+                $('.time-div').not('.' + value).hide('1000');
+                $('.time-div').filter('.' + value).show('1000');
+                
+                //  Change class of selected date
+                if (className != 'date selected'){
+                    $(this).toggleClass('selected').siblings().removeClass('selected');
+                }
+                
+                var time_class = document.getElementsByClassName(value);
+                time_class[0].style.display = "flex";
+            });
+
+            // Change class of selected time
+            $('.time').click(function () {
+                $(this).toggleClass('selected').siblings().removeClass('selected');
+            });
+        });
+    </script>
+</body>
+</html>

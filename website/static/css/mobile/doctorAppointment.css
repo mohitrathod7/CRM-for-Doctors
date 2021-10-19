@@ -1,0 +1,23 @@
+.date-div, .time-div{
+    justify-content: space-between;
+}
+
+.date{
+    padding: 10px 30px;
+}
+
+.time{
+    margin: 0 0 15px 0;
+    padding: 10px 15px;
+}
+
+.button{
+    height: 50px;
+}
+
+@media only screen and (max-width: 660px){
+    .confirmation-div{
+        height: 97%;
+        width: 98%;
+    }
+}

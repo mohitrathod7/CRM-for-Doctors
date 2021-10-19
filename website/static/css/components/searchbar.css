@@ -1,0 +1,98 @@
+.search-bar{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    background: var(--pri-bg);
+}
+
+.search-bar form{
+    display: flex;
+    width: -webkit-fill-available;
+}
+
+.search-box{
+    padding: 0 10px;
+    height: 35px;
+    width: -webkit-fill-available;
+    background: var(--sec-bg);
+    color: var(--sec-text);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-button{
+    padding: 0 10px;
+    background: var(--sec-bg);
+    color: var(--pri-text);
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-button i::before{
+    font-size: 18px;
+}
+
+
+/* Filter and Sort */
+
+.sort-filter{
+    padding-left: 25px;
+    height: 35px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sort-filter .fa::before{
+    color: var(--pri-text);
+    font-size: 25px;
+}
+
+.sort-filter i{
+    width: 25px;
+}
+
+.sort-filter  .fa-exchange{
+    transform: rotateZ(90deg);
+}
+
+
+/* Overlay */
+
+.filter, .sort{
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 80vh;
+    width: 80vh;
+    background: var(--sec-bg);
+    border: 1px solid var(--sec-hover);
+    border-radius: 15px;
+    z-index: 1000;
+    pointer-events: all;
+}
+
+.filter .fa-times::before, .sort .fa-times::before{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 28px;
+    color: var(--sec-text);
+    display: block;
+}
+
+
+/* For (IPhone 6/7/8 Plus) and (Pixel 2) */
+@media only screen and (max-width: 660px){
+    .filter, .sort{
+        height: 97%;
+        width: 100%;
+    }
+}

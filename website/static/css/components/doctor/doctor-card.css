@@ -1,0 +1,122 @@
+.doctors{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.doctor-card{
+    display: none;
+    margin: 0 5px 20px 5px;
+    display: flex;
+    flex-direction: row;
+    min-height: 200px;
+    width: 350px;
+    background: var(--sec-bg);
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 0 var(--boxShadow);
+    transition: all .3s ease;
+    border-radius: 8px; 
+}
+
+.doctor-card .left, .doctor-card .right{
+    padding: 15px;
+}
+
+.doctor-card .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.doctor-card .left img{
+    height: 100px;
+    width: 100px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.view-profile-left, .view-profile-right{
+    padding: 5px;
+    width: -webkit-fill-available;
+    background: hsl(166, 20%, 16%);
+    color: var(--groww-green);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.view-profile-left:hover, .view-profile-right:hover{
+    color: black;
+    background: var(--groww-green);
+}
+
+.doctor-card .right{
+    width: -webkit-fill-available;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: var(--sec-text);
+}
+
+.doctor-card .right .name{
+    padding-bottom: 5px;
+}
+
+.doctor-card .right .name h3{
+    color: var(--pri-text);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.doctor-card .right .name p{
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--red-alt);
+}
+
+.doctor-card .right .rating{
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.doctor-card .right .rating .rate{
+    margin-right: 15px;
+    display: flex;
+    align-items: baseline;
+}
+
+.doctor-card .right .rating .fa-star::before{
+    font-size: 14px;
+    color: var(--yellow);
+}
+
+.doctor-card .right .speciality{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    max-height: 89px;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: hidden;
+}
+
+.doctor-card .right .speciality p{
+    margin: 5px;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 3px 16px;
+    font-size: 12px;
+    width: fit-content;
+    color: var(--groww-blue);
+    background: hsl(233, 20%, 16%);
+    border-radius: 20px;
+}
+
+.view-profile-right{
+    display: none;
+}

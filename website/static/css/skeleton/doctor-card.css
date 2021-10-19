@@ -1,0 +1,126 @@
+.loading .doctors{
+    margin: 0 auto;
+    max-width: 1160px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.loading .doctors .doctor-card{
+    margin: 0 5px 20px 5px;
+    display: flex;
+    flex-direction: row;
+    min-height: 200px;
+    width: 350px;
+    background: var(--sec-bg);
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 0 var(--boxShadow);
+    transition: all .3s ease;
+    border-radius: 8px;
+}
+
+.loading .doctors .doctor-card .left, .doctors .doctor-card .right{
+    padding: 15px;
+}
+
+.loading .doctors .doctor-card .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.loading .doctors .doctor-card .left div{
+    height: 100px;
+    width: 100px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.loading .doctors .doctor-card .view-profile-left{
+    height: 31px;
+    width: -webkit-fill-available;
+    border-radius: 8px;
+    background: var(--sec-hover);
+}
+
+.loading .doctors .doctor-card .right .name{
+    padding-bottom: 5px;
+}
+
+.loading .doctors .doctor-card .right .name h3{
+    height: 18px;
+    width: 183px;
+}
+
+.loading .doctors .doctor-card .right .name p{
+    margin-top: 10px;
+    height: 14px;
+    width: 100px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.loading .doctors .doctor-card .right .rating{
+    padding-top: 8px;
+    padding-bottom: 5px;
+}
+
+.loading .doctors .doctor-card .right .rating .rate{
+    margin-right: 15px;
+    height: 14px;
+    width: 38px;
+    display: flex;
+}
+
+.loading .doctors .doctor-card .right .rating .rate-count{
+    height: 14px;
+    width: 66px;
+}
+
+.loading .doctors .doctor-card .right .speciality{
+    margin-top: 12px;
+    max-height: 89px;
+}
+
+.loading .doctors .doctor-card .right .speciality p{
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 5px;
+    padding: 0;
+    height: 21px;
+    width: 72px;
+    border: 0;
+    border-radius: 20px;
+    background: var(--sec-hover);
+}
+
+.loading .doctors .doctor-card .right .speciality p:nth-child(1){
+    width: 65px;
+}
+
+.loading .doctors .doctor-card .right .speciality p:nth-child(2){
+    width: 85px;
+}
+
+.loading .doctors .doctor-card .right .speciality p:nth-child(3){
+    width: 100px;
+}
+
+.loading .doctors .doctor-card .right .speciality p:nth-child(4){
+    width: 85px;
+    margin-bottom: 0;
+}
+
+.loading .doctors .doctor-card .right .speciality p:nth-child(5){
+    width: 90px;
+    margin-bottom: 0;
+}
+
+.loading .doctors .doctor-card .right .view-profile-right{
+    display: none;
+}
